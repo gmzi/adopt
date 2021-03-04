@@ -28,9 +28,15 @@
                 <div class="pet-name">
                     <h2>{{pet.name}}</h2>
                 </div>
+                {%if pet.photo_url%}
                 <div class="img-container">
                     <img src="{{pet.photo_url}}" alt="">
                 </div>
+                {% else %}
+                <div class="img-container">
+                    <p>Photo not availbale yet</p>
+                </div>
+                {%endif%}
                 <div class="available">
                     {%if pet.available%}
                     <span class="av">Available!</span>

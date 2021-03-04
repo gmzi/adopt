@@ -43,16 +43,17 @@
     {%endif%}
     {%endif%}
 </div>
-<div class="pet-container">
+<div class="form-container">
     <h2>Edit this pet's information</h2>
     <form method="POST">
+        {{ form.hidden_tag() }}
         {{form.photo_url.label}}
         {{form.photo_url}}
         {{form.notes.label}}
         {{form.notes}}
         {{form.available.label}}
         {{form.available}}
-        <button>Save</button>
+        <button>Submit new pet</button>
     </form>
 </div>
 
