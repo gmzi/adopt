@@ -1,0 +1,25 @@
+{% extends 'home.html' %}
+{% block title %} add pet {%endblock%}
+{% block home%}
+{%endblock%}
+{%block form %}
+<h1>Add a new pet</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <!--Adds the hidden CSRF token-->
+    {% for field in form if field.widget.input_type != 'hidden' %}
+    <div class="form-group">
+        <!-- mind 'class_' for styling purposes  -->
+        {{field.label}}
+        {{field}}
+        <!-- show validation errors if any, with the label: -->
+        {%for err in field.errors%}
+        <small class="form-text">
+            {{err}}
+        </small>
+        {%endfor%}
+    </div>
+    {% endfor %}
+    <button>Submit new pet</button>
+</form>
+{%endblock%}

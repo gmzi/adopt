@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>{% block title %} adopt {%endblock%}</title>
+</head>
+
+<body>
+    {% block home %}
+    <h1> Meet our pets</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <div class="pet-list-container">
+        <ul>
+            {% for pet in pets %}
+            <div class="pet-card">
+                <div class="pet-name">
+                    <h2>{{pet.name}}</h2>
+                </div>
+                <div class="img-container">
+                    <img src="{{pet.photo_url}}" alt="">
+                </div>
+                <div class="available">
+                    {%if pet.available%}
+                    <span class="av">Available!</span>
+                    <a href="/{{pet.id}}">meet this creature</a>
+                    {%else%}
+                    <span class="not-av">Not Available</span>
+                    {%endif%}
+                </div>
+            </div>
+            {%endfor%}
+        </ul>
+    </div>
+    <div class="btn-container">
+        <a href="/add" class="enroll-pet">Enroll a pet</a>
+    </div>
+    {% endblock %}
+    {% block form %}
+    {% endblock %}
+    {% block show_pet %}
+    {% endblock %}
+</body>
+
+</html>

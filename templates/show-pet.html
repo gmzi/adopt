@@ -1,0 +1,59 @@
+{% extends 'home.html' %}
+{% block title %} meet pet {%endblock%}
+{% block home%}
+{%endblock%}
+{%block form %}
+{%endblock%}
+{%block show_pet%}
+<div class="pet-card">
+    {% if pet.photo_url%}
+    <div class="img-container">
+        <img src="{{pet.photo_url}}" alt="">
+    </div>
+    <div class="pet-name">
+        <h2>name: {{pet.name}}</h2>
+    </div>
+    <div class="pet-species">
+        <h2>species: {{pet.species}}</h2>
+    </div>
+    {%if pet.age%}
+    <div class="pet-age">
+        <h2>age: {{pet.age}}</h2>
+    </div>
+    {%else%}
+    <div class="pet-age">
+        <span class="no-age">we don't know it's age</span>
+    </div>
+    {%endif%}
+    {% else %}
+    <div class="pet-name">
+        <h2>name: {{pet.name}}</h2>
+    </div>
+    <div class="pet-species">
+        <h2>species: {{pet.species}}</h2>
+    </div>
+    {%if pet.age%}
+    <div class="pet-age">
+        <h2>age: {{pet.age}}</h2>
+    </div>
+    {%else%}
+    <div class="pet-age">
+        <span class="no-age">we don't know it's age</span>
+    </div>
+    {%endif%}
+    {%endif%}
+</div>
+<div class="pet-container">
+    <h2>Edit this pet's information</h2>
+    <form method="POST">
+        {{form.photo_url.label}}
+        {{form.photo_url}}
+        {{form.notes.label}}
+        {{form.notes}}
+        {{form.available.label}}
+        {{form.available}}
+        <button>Save</button>
+    </form>
+</div>
+
+{%endblock%}
